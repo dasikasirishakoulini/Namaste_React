@@ -22,7 +22,11 @@
 - Parcel can be used in Lazy or Https mode
 - Different dev and prod bundles
 
+# Routing in web apps
+- Client side routing --No network call made while navigating the pages
+- Server side Routing -- network calls are made while routing to different pages from index.html
 
+Single page application implements client side routing
 
 
 
