@@ -1,12 +1,12 @@
 
 import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
 //import resList from "../utils/mockData";//mockdata not needed
- import { useState, useEffect} from "react";
+ import { useState, useEffect, useContext} from "react";
 import Shimmer from './ShimmerComponent'
 import {Link} from 'react-router-dom';
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Game from "./Game";
-
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //first state variable to store original data after Api call
@@ -18,6 +18,8 @@ const Body = () => {
     const[searchText,setSearchText] = useState([])
 
    const RestarauntCardPromotedLabel = withPromotedLabel(RestaurantCard);
+
+      const {setUserName,loggedInUser} = useContext(UserContext);
 
     useEffect(() => {
         fetchData();
@@ -31,7 +33,7 @@ const Body = () => {
         const json = await data.json();
         setlistOfRestaraunts(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         setFilteredRestaurants(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-        //console.log(json.data);
+        console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
        };
 
        const onlineStatus = useOnlineStatus();
@@ -47,7 +49,8 @@ if(listOfRestaraunts.length === 0){
     return (
       <div className="body">
         <div className="filter">
-          <div className="search m-4 p-4">
+          <div className="search m-4 p-4 flex items-center">
+          
 
             <input
               type="text"
@@ -73,18 +76,26 @@ if(listOfRestaraunts.length === 0){
               Search
             </button>
 
-         
           <button
-            className="px-4 py-2 bg-gray-50 rounded-lg"
+            className="px-4 py-2 bg-blue-100 rounded-lg m-4"
             onClick={() => {
-              const filteredList = listOfRestaraunts.filter((res) => res.info.avgRating > 4);
-              setlistOfRestaraunts(filteredList);
+              const filteredList = listOfRestaraunts.filter((res) => { 
+                 return (res.info.avgRating > 4)
+                });
+                setFilteredRestaurants(filteredList);
             }}
           >
             Top Rated Restaurant
           </button> 
 
-
+          
+              <label>UserName</label>
+              <input 
+              className="border border-black p-1 px-4 m-2" 
+              value={loggedInUser}
+              onChange={(e) => setUserName(e.target.value)}
+              />
+          
           </div>      
         </div>
 

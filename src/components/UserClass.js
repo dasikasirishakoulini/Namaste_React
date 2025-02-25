@@ -1,4 +1,5 @@
 import React from 'react';
+import UserContext from '../utils/UserContext';
 
 class UserClass extends React.Component{
     constructor(props){
@@ -53,12 +54,19 @@ class UserClass extends React.Component{
             count: this.state.count + 1
               })
             }}>🥊 </button>
+            <div><UserContext.Consumer>
+                {({loggedInUser}) => <h1>LoggedInUser :{loggedInUser}</h1>}
+                
+                </UserContext.Consumer></div>
 
             <h2>Name: {this.state.userInfo.name}</h2>
             <h3>Location: {this.state.userInfo.location}</h3>
             <img src= {this.state.userInfo.avatar_url}></img>
-                </div>
+
+            </div>
+               
                 );
+               
     }
 
 }
