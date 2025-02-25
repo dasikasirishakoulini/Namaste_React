@@ -31,7 +31,7 @@ const Body = () => {
         const json = await data.json();
         setlistOfRestaraunts(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         setFilteredRestaurants(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-        console.log(json.data);
+        //console.log(json.data);
        };
 
        const onlineStatus = useOnlineStatus();

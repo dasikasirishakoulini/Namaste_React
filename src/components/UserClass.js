@@ -3,7 +3,7 @@ import React from 'react';
 class UserClass extends React.Component{
     constructor(props){
         super(props);
-        console.log(props);
+        //console.log(props);
 
         this.state = {
            phoneNumber1 : 7406073040,
@@ -28,11 +28,11 @@ class UserClass extends React.Component{
     }
 
     componentDidUpdate(){
-        console.log("component did update is called after the mounting n update cycles are called");
+        //.log("component did update is called after the mounting n update cycles are called");
     }
 
     componentWillUnmount(){
-        console.log("this methos is called when the component disappear from html like when other page is clicked")
+        //console.log("this methos is called when the component disappear from html like when other page is clicked")
     }
 
     render() {
