@@ -35,5 +35,11 @@ npm start
 
 ![alt text](A0337583-0D1A-4D99-8095-594A6326939F_1_105_c.jpeg)
 
-
+#Redux Tool Kit
+- Install @reduxjs/toolkit and react-redux
+-Build our own store
+-Connect our store to our app
+-Slice (cartSlice)
+-dispatch(action)
+-Selector
 
